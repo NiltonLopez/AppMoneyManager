@@ -1,5 +1,5 @@
 <?php
-  // Asigna los archivos CSS 
+  // Asigna los archivos CSS --
   $pageLogo = './assets/img/logos/LogoIndex.png';
   $pageStyleBoots = './assets/css/bootstrap/bootstrap.min.css';
   $pageStyleHeader = './assets/css/header.css';
