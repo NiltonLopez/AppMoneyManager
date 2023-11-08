@@ -39,7 +39,9 @@ class ContactoModelo{
 
     public function guardarContactenos(){
         $sql="INSERT INTO tblcontactenos VALUES
-        (null,'{$this->getNombre()}','{$this->getCorreo()}',
+        (null,
+        '{$this->getNombre()}',
+        '{$this->getCorreo()}',
         '{$this->getMensaje()}');";
         $guardar=$this->db->query($sql);
         $result = false; 
