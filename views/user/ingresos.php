@@ -19,7 +19,7 @@
       <div class="col-1">
       </div>
       <div class="col-10">
-      <form id="formularioEgresos" method="post">
+      <form id="formularioEgresos" method="post" action="../../controllers/ingresosController.php">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
@@ -27,9 +27,9 @@
                 <label for="concepto">Medio:</label>
                 <select class="form-control" id="medio">
                     <option selected>Seleccionar</option>
-                    <option value="efectivo">Efectivo</option>
-                    <option value="transferencia">Transferencia</option>
-                    <option value="otros">Otro</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Transferencia">Transferencia</option>
+                    <option value="Otro">Otro</option>
                 </select>
               </div>
             </div>
@@ -53,10 +53,10 @@
               <label for="categoria">Categoría:</label>
                 <select class="form-control" id="categoria">
                   <option selected>Seleccionar</option>
-                    <option value="trabajo">Trabajo</option>
-                    <option value="bonificación">Bonificación</option>
-                    <option value="regalo">Regalo</option>
-                    <option value="otro">Otro</option>
+                    <option value="1">Salario</option>
+                    <option value="2">Bonificación</option>
+                    <option value="3">Regalo</option>
+                    <option value="4">Otro</option>
                 </select>
               </div>
             </div>
