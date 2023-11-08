@@ -1,5 +1,5 @@
 <?php
-class GastoModelo{
+class ContactoModelo{
     private $id;
     private $nombre;
     private $correo;
@@ -38,13 +38,13 @@ class GastoModelo{
     }
 
     public function guardarContactenos(){
-        $sql="INSERT INTO tblcontacto VALUES
+        $sql="INSERT INTO tblcontactenos VALUES
         (null,'{$this->getNombre()}','{$this->getCorreo()}',
         '{$this->getMensaje()}');";
         $guardar=$this->db->query($sql);
         $result = false; 
         if($guardar){
-        $result=true;
+            $result=true;
         }
         return $result;
     }
