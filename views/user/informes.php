@@ -7,115 +7,105 @@
   $pageStyles = '../../assets/css/reportes.css';
 
   include '../layout/headerUser.php'; 
+
 ?>
 
-<br>
-<br>
-        <div class="d-flex justify-content-center">
-            <h1 class="text-center">TUS REPORTES FINANCIEROS</h1>
+<br/>
+
+    <div class="row">
+        <div class="col-1">
         </div>
-
-        <!--Cuerpo: Contiene la discriminación de los gastos-->
-        <div class="container mt-4">
-            <h1>Reporte del mes de Septiembre:</h1>
-            <br>
-
-            <!-- Resumen de gastos totales -->
-            <div class="row">
-                <div id="hola" class="col-md-8">
-                    <h3>Gastos totales en alimentación</h3>
+            <div class="col-10"> 
+                <h1 class="text-center">TUS REPORTES FINANCIEROS</h1>
+                <?php
+                        include '../../controllers/informesController.php';
+                        require_once '../../models/ingresosModel.php';
+                        require_once '../../models/egresosModel.php';
                     
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">100%</div>
-                    </div>
+                        $ingresosModel = new ingresosModel();
+                        $egresosModel = new egresosModel();
                     
-                </div>
-                <div class="col-md-4">
-                    <h3>Gasto más alto</h3>
-                    <p>Has consumido la totalidad de tu presupuesto para alimentación</p>
-                </div>
+                        // Consultar ingresos
+                        $ingresos = $ingresosModel -> consultarIngresos();
+                    
+                        // Consultar egresos
+                        $egresos = $egresosModel -> consultarEgresos();
+                ?>
+                <h3>Ingresos:</h3>
+                    <table class="table table-dark table-striped">
+                        <!-- Encabezados de la tabla -->
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Medio</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <!-- Datos de ingresos -->
+                        <tbody class="table-group-divider">
+                        <?php while ($ingreso = $ingresos->fetch_assoc()) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $ingreso['idIngreso']; ?></th>
+                                <td><?php echo $ingreso['Medio']; ?></td>
+                                <td><?php echo $ingreso['Monto']; ?></td>
+                                <td><?php echo $ingreso['Fecha']; ?></td>
+                                <td><?php echo $ingreso['nombreCategoria']; ?></td>
+                                <td>
+                                    <a href="informes.php?id=<?php echo $ingreso['idIngreso']; ?>&type=ingreso">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
+                                            <g fill="#84c8d1" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M10,2l-1,1h-5v2h3h10h3v-2h-5l-1,-1zM5,7v15h14v-15z"></path></g></g>
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+
+                    <h3>Egresos:</h3>
+                    <table class="table table-dark table-striped">
+                        <!-- Encabezados de la tabla -->
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Concepto</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <!-- Datos de egresos -->
+                        <tbody class="table-group-divider">
+                            <?php while ($egreso = $egresos->fetch_assoc()) { ?>
+                                <tr>
+                                    <th scope="row"><?php echo $egreso['idEgreso']; ?></th>
+                                    <td><?php echo $egreso['Concepto']; ?></td>
+                                    <td><?php echo $egreso['Monto']; ?></td>
+                                    <td><?php echo $egreso['Fecha']; ?></td>
+                                    <td><?php echo $egreso['nombreCategoria']; ?></td>
+                                    <td>
+                                        <a href="informes.php?id=<?php echo $egreso['idEgreso']; ?>&type=egreso">
+                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
+                                                <g fill="#84c8d1" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M10,2l-1,1h-5v2h3h10h3v-2h-5l-1,-1zM5,7v15h14v-15z"></path></g></g>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
             </div>
-            <br>
-
-            <div class="row">
-                <div id="hola" class="col-md-8">
-                    <h3>Gastos totales en ropa</h3>
-                    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="85">85%</div>
-                    </div>
-                    
-                </div>
-                <div class="col-md-4">
-                    <h3>¡Por poco!</h3>
-                    <p>Este mes ahorraste el 15% de to presupuesto para ropa</p>
-                </div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div id="hola" class="col-md-8">
-                    <h3>Gastos totales en transporte</h3>
-                    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">75%</div>
-                    </div>
-                    
-                </div>
-                <div class="col-md-4">
-                    <h3>¡Lo hiciste bien!</h3>
-                    <p>Este mes ahorraste el 25% de to presupuesto para ropa</p>
-                </div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div id="hola" class="col-md-8">
-                    <h3>Gastos totales en plataformas de entretenimiento</h3>
-                    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">35%</div>
-                    </div>
-                    
-                </div>
-                <div class="col-md-4">
-                    <h3>Gasto más bajo</h3>
-                    <p>Lo hiciste bien, pero podrías mejorar</p>
-                </div>
-            </div>
-            <br>
-
-            <div class="row">
-                <div id="hola" class="col-md-8">
-                    <h3>Duedas totales</h3>
-                    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100">0%</div>
-                    </div>
-                    
-                </div>
-                <div class="col-md-4">
-                    <h3>¡Bien!</h3>
-                    <p>Actualmente no tienes deudas pendientes</p>
-                </div>
-            </div>
-            <br>
-
-            <!-- Gráfico de porcentajes totales de gastos -->
-            <div class="text-center">
-                <h3>Gráfico de Gastos</h3>
-                <img src="../../assets/img/reportes/Grafico.png">
-                
-            </div>
+        <div class="col-1">
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+    </div>
+
+<br />
+<br />
+<br />
+<br />
 
 <?php include '../layout/footer.php'; ?>
