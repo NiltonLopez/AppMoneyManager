@@ -3,14 +3,14 @@
 
     class registroModel {
         private $id;
-        private $Nombre;
-        private $Email;
+        private $nombre;
+        private $email;
         private $password;
         private $telefono;
     
         // Conexión a la base de datos
         private $db;
-        public function _construct() {
+        public function __construct() {
             $this -> db = Database::connect();
         }
 
@@ -18,35 +18,35 @@
         public function getId(){
             return $this -> idPersona;
         }
-        public function setId(){
+        public function setId($id){
             $this -> idPersona = $this -> db -> real_escape_string($id);
         }
 
         public function getNombre(){
             return $this -> Nombre;
         }
-        public function setNombre(){
+        public function setNombre($nombre){
             $this -> Nombre = $this -> db -> real_escape_string($nombre);
         }
 
         public function getEmail(){
             return $this -> Email;
         }
-        public function setEmail(){
+        public function setEmail($email){
             $this -> Email = $this -> db -> real_escape_string($email);
         }
 
         public function getPassword(){
             return $this -> Password;
         } 
-        public function setPassword(){
+        public function setPassword($password){
             $this -> Password = $this -> db -> real_escape_string($password);
         }
 
         public function getTelefono(){
             return $this -> Telefono;
         }
-        public function setTelefono(){
+        public function setTelefono($telefono){
             $this -> Telefono = $this -> db -> real_escape_string($telefono);
         }
 
@@ -59,10 +59,7 @@
                 '{$this -> getPassword()}',
                 '{$this -> getTelefono()}');";
             $guardar = $this -> db -> query($sql);
-            $result = false;
-            if ($result) {
-                $result = true;
-            }
+            $result = $guardar ? true : false;
             return $result;
         }
     }
