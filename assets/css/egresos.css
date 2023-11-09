@@ -14,10 +14,3 @@ h1 {
   font-family: "Jost", sans-serif;
   font-weight: bold;
 }
-
-/*Estilos para el texto */
-.Centrar-texto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

@@ -1,9 +1,9 @@
 <?php
     require_once 'db.php';
 
-    class ingresosModel {
+    class egresosModel {
         private $id;
-        private $medio;
+        private $concepto;
         private $monto;
         private $fecha;
         private $categoria;
@@ -17,17 +17,17 @@
 
         // Gets and sets
         public function getId(){
-            return $this -> idIngreso;
+            return $this -> idEgreso;
         }
         public function setId($id){
-            $this -> idIngreso = $this -> db -> real_escape_string($id);
+            $this -> idEgreso = $this -> db -> real_escape_string($id);
         }
 
-        public function getMedio(){
-            return $this -> Medio;
+        public function getConcepto(){
+            return $this -> Concepto;
         }
-        public function setMedio($medio){
-            $this -> Medio = $this -> db -> real_escape_string($medio);
+        public function setConcepto($concepto){
+            $this -> Concepto = $this -> db -> real_escape_string($concepto);
         }
 
         public function getMonto(){
@@ -58,11 +58,11 @@
             $this -> idUsuario = $this -> db -> real_escape_string($usuario);
         }
 
-        // Guardar 
-        public function guardarIngreso(){
-            $sql = "INSERT INTO tbl_ingresos VALUES 
+        // Guardar
+        public function guardarEgreso(){
+            $sql = "INSERT INTO tbl_egresos VALUES 
                 (NULL,
-                '{$this -> getMedio()}',
+                '{$this -> getConcepto()}',
                 '{$this -> getMonto()}',
                 '{$this -> getFecha()}',
                 '{$this -> getIdCategoria()}',
@@ -74,19 +74,19 @@
         }
 
         // Consultar 
-        public function consultarIngresos(){
-            $sql = "SELECT ingresos.idIngreso, ingresos.Medio, ingresos.Monto, ingresos.Fecha, categoria.nombreCategoria AS nombreCategoria
-                    FROM tbl_ingresos AS ingresos
-                    INNER JOIN tbl_categoriaIngresos AS categoria 
-                    ON ingresos.idCategoria = categoria.idCatIngresos";
-            $ingresos = $this -> db -> query($sql);
-
-            return $ingresos; 
+        public function consultarEgresos(){
+            $sql = "SELECT egresos.idEgreso, egresos.Concepto, egresos.Monto, egresos.Fecha, categoria.NombreCategoria AS nombreCategoria
+                    FROM tbl_egresos AS egresos
+                    INNER JOIN tbl_categoriaEgresos AS categoria 
+                    ON egresos.idCategoria = categoria.idCatEgresos";
+            $egresos = $this->db->query($sql);
+        
+            return $egresos;
         }
 
         // Eliminar
-        public function eliminarIngreso($id){
-            $sql = "DELETE FROM tbl_ingresos WHERE idIngreso = {$id}";
+        public function eliminarEgreso($id){
+            $sql = "DELETE FROM tbl_egresos WHERE idEgreso = {$id}";
             $eliminado = $this -> db -> query($sql);
             $result = $eliminado ? true : false;
             return $result;

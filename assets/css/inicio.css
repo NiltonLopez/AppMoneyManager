@@ -43,3 +43,8 @@ img {
 img:hover {
   transform: scale(1.05);
 }
+
+#content {
+  position: relative;
+  min-height: 100vh;
+}

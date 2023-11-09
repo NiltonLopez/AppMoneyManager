@@ -10,7 +10,6 @@
 ?>
 
 <br/>
-<br/>
   <div class="text-content">
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 8vh;">
       <h1 class="text-center">Regístrate</h1>
@@ -54,5 +53,9 @@
       </div>
     </div>
   </form>
+
+<br>
+<br>
+<br>
 
 <?php include './layout/footer.php'; ?>
