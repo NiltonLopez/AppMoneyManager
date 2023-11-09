@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div class="row justify-content-center vh-100 w-100">
+    <div class="row justify-content-center">
 
         <div id="ladoizquierdo" class="col-6">
             <!--Lado izquierdo de la página-->
