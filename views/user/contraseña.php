@@ -16,7 +16,7 @@
   <div class="col-1"></div>
   <div class="col-10">
     <?php
-      include '../../controllers/ingresosController.php';
+      include '../../controllers/contraseñaController.php';
 
       if ($alert === "success") {
       ?>
@@ -33,7 +33,7 @@
       } elseif ($alert === "warning") {
         ?>
           <div class="alert alert-warning" role="alert">
-            Complete todos los campos
+            Campos incompletos y/o contraseña incorrecta
           </div>
         <?php
       } else {
@@ -78,8 +78,6 @@
             <button type="submit" class="btn btn-outline-dark" name="btnCambiarContraseña" value="CambiarContraseña">
               Guardar Contraseña
             </button>
-            <br/>
-            <br/>
           </div>
         </div>
       </div>
