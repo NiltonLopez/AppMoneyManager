@@ -28,43 +28,50 @@
 <body>
     <div class="row justify-content-center">
 
-        <div id="ladoizquierdo" class="col-6">
-            <!--Lado izquierdo de la página-->
-            <div class="center-logo">
-                <a href="../index.php"><img src="../assets/img/login/LogoLogin.png" width="280"></a>
-            </div>
+    <div id="ladoizquierdo" class="col-6">
+        <!--Lado izquierdo de la página-->
+        <div class="center-logo">
+            <a href="../index.php"><img src="../assets/img/login/LogoLogin.png" width="280"></a>
         </div>
+    </div>
 
-        <div id="ladoderecho" class="col-6">
-            <!--Lado derecho de la página-->
-            <nav class="center-login">
-                <h3 class="text-iniciarsesion">INICIAR SESIÓN</h3>
+    <div id="ladoderecho" class="col-6">
+        <!--Lado derecho de la página-->
+        <nav class="center-login">
+            <h3 class="text-iniciarsesion">INICIAR SESIÓN</h3>
+            <br>
+
+            <?php
+            include '../models/conexion.php';
+            include '../controllers/loginController.php';
+            ?>
+
+            <form method="post" action="">
+                <div class="form-group">
+                    <label for="email"></label>
+                    <div class="col-12">
+                        <input type="email" class="form-control" id="inputAddress" name="email" placeholder="Escribe tu e-mail" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <div class="col-12">
+                        <input type="password" class="form-control" id="inputAddress" name="password" placeholder="Escribe tu contraseña" >
+                    </div>
+                </div>
                 <br>
-                <form method="POST" action="/formulario">
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <div class="col-12">
-                            <input type="email" class="form-control" id="inputAddress" placeholder="Escribe tu e-mail" required>
-                          </div>
+                <div class="row justify-content-center g-2">
+                    <div class="col-5 d-flex justify-content-end">
+                        <input name="btningresar" class="btn btn-dark" type="submit" value="Ingresar">
                     </div>
-                    <div class="form-group">
-                        <label for="password"></label>
-                        <div class="col-12">
-                            <input type="password" class="form-control" id="inputAddress" placeholder="Escribe tu contraseña" required>
-                          </div>
+                    <div class="col-7 d-flex justify-content-start">
+                        <a href="./registro.php" class="btn btn btn-outline-light">Aún no tengo cuenta</a>
                     </div>
-                    <br>
-                    <div class="row justify-content-center g-2">
-                        <div class="col-5 d-flex justify-content-end">
-                            <button type="button"  class="btn btn-dark"><a href="./user/inicio.php" style="color: #FFFFFF;">Ingresar</a></button>
-                        </div>
-                        <div class="col-7 d-flex justify-content-start">
-                            <a href="./registro.php" class="btn btn btn-outline-light">Aún no tengo cuenta</a>
-                        </div>
-                    </div>
-                </form>
-            </nav>
-        </div> <!--col-->
+                </div>
+                <br>
+            </form>
+        </nav>
+    </div> <!--col-->
     </div> <!--row-->
 
 <?php include './layout/footer.php'; ?>
