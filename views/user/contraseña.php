@@ -22,13 +22,13 @@
         if ($alert === "success") {
         ?>
           <div class="alert alert-success" role="alert">
-            La nueva contraseña ha sido guardado
+            La nueva contraseña ha sido guardada
           </div>
         <?php
         } elseif ($alert === "danger") {
         ?>
           <div class="alert alert-danger" role="alert">
-          La nueva contraseña no ha sido guardado
+          La nueva contraseña no ha sido guardada
           </div>
         <?php
         } elseif ($alert === "warning") {
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <br>
+          <br>        
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-              <label for="nuevacontraseña2">Confirmar nueva contraseña:</label>
+              <label for="nuevacontraseña2">Confirma nueva contraseña:</label>
                 <input type="text" class="form-control" name="nuevacontraseña2">
               </div>
             </div>
