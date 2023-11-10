@@ -26,21 +26,20 @@
 </head>
 
 <body>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center vh-100 w-100">
 
-    <div id="ladoizquierdo" class="col-6">
-        <!--Lado izquierdo de la página-->
-        <div class="center-logo">
-            <a href="../index.php"><img src="../assets/img/login/LogoLogin.png" width="280"></a>
+        <div id="ladoizquierdo" class="col-6">
+            <!--Lado izquierdo de la página-->
+            <div class="center-logo">
+                <a href="../index.php"><img src="../assets/img/login/LogoLogin.png" width="280"></a>>
+            </div>
         </div>
-    </div>
 
-    <div id="ladoderecho" class="col-6">
-        <!--Lado derecho de la página-->
-        <nav class="center-login">
+        <div id="ladoderecho" class="col-6">
+            <!--Lado derecho de la página-->
+            <nav class="center-login">
             <h3 class="text-iniciarsesion">INICIAR SESIÓN</h3>
             <br>
-
             <?php
             include '../models/conexion.php';
             include '../controllers/loginController.php';
@@ -60,7 +59,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="row justify-content-center g-2">
+                <div class="row justify-content-center">
                     <div class="col-5 d-flex justify-content-end">
                         <input name="btningresar" class="btn btn-dark" type="submit" value="Ingresar">
                     </div>
@@ -70,8 +69,8 @@
                 </div>
                 <br>
             </form>
-        </nav>
-    </div> <!--col-->
+            </nav>
+        </div> <!--col-->
     </div> <!--row-->
 
 <?php include './layout/footer.php'; ?>

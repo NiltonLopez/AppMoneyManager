@@ -55,8 +55,11 @@
               <a class="nav-link" href="http://localhost/MoneyManager/views/user/contraseña.php">CONTRASEÑA</a>
             </li>
             <li class="nav-item">
-              <form action="http://localhost/MoneyManager/index.php">
-                <button class="btn btn-secondary btn-sm" href="http://localhost/MoneyManager/index.php">
+            <?php
+              include '../../controllers/loginController.php';
+            ?>
+              <form method="post">
+                <button class="btn btn-secondary btn-sm" name="btnCerrarSesion" href="http://localhost/MoneyManager/index.php">
                   CERRAR SESIÓN
                 </button>
               </form>

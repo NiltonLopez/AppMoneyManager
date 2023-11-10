@@ -2,8 +2,8 @@
    require_once 'db.php';
 
 class contraseñaModel{
-    private $idUsuario;
-    private $contraseña;
+    private $emailUsuario;
+    private $password;
     private $nuevaContraseña;
     private $nuevaContraseña2;
 
@@ -13,18 +13,18 @@ class contraseñaModel{
         $this -> db = Database::connect();      
     }
 
-    public function getIdUsuario(){
-        return $this->idUsuario;
+    public function getEmailUsuario(){
+        return $this->emailUsuario;
     }
 
-    public function setIdUsuario($idUsuario){
-        $this->idUsuario=$this->db->real_escape_string($idUsuario);
+    public function setEmailUsuario($emailUsuario){
+        $this->emailUsuario=$this->db->real_escape_string($emailUsuario);
     }
-    public function getContraseña(){
-        return $this->contraseña;
+    public function getPassword(){
+        return $this->password;
     }
-    public function setContraseña($contraseña){
-        $this->contraseña=$this->db->real_escape_string($contraseña);
+    public function setPassword($password){
+        $this->password=$this->db->real_escape_string($password);
     }
     public function getNuevaContraseña(){
         return $this->nuevaContraseña;
@@ -40,15 +40,13 @@ class contraseñaModel{
         $this->nuevaContraseña2=$this->db->real_escape_string($nuevaContraseña2);
     }
 
-    public function actualizarContraseña($idUsuario){
-        // Verificar que la antigua contraseña es correcta antes de actualizar
-        if ($this->getNuevaContraseña() == $this->getNuevaContraseña2()) {
-            $sqlActualizarContraseña = "UPDATE persona SET contraseña = '{$this->getNuevaContraseña()}' WHERE id = '$idUsuario' AND contraseña = '{$this->getContraseña()}'";
-            $guardar = $this->db->query($sqlActualizarContraseña);
-            $result = $guardar ? true : false;  
-        }else{
-            $result = false;
-        }
+    public function actualizarContraseña(){
+
+        $emailUsuario = isset($_SESSION['usuario_email']) ? $_SESSION['usuario_email'] : null;
+        $sql = "UPDATE tbl_persona SET Password = '{$this->getNuevaContraseña()}' WHERE Email = '$emailUsuario' AND Password = '{$this->getPassword()}'";
+        $guardar = $this->db->query($sql);
+        $result = $guardar ? true : false;
+              
         return $result;
     }
 
