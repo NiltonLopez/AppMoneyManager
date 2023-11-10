@@ -62,33 +62,62 @@
     <div class="row">
         <div class="col-12 text-center" style="color: #f4f4f4">
           <h2>Contáctanos</h2>
-        </div>
+        </div> 
+        <br>
         <div class="col-1"></div>
         <div class="col-10">
             <div class="row">
+            <?php
+                include '../controllers/contactosController.php';
+
+                if ($alert === "success") {
+                ?>
+                  <div class="alert alert-success" role="alert">
+                    El ingreso ha sido guardado
+                  </div>
+                <?php
+                } elseif ($alert === "danger") {
+                ?>
+                  <div class="alert alert-danger" role="alert">
+                    El ingreso no ha sido guardado
+                  </div>
+                <?php
+                } elseif ($alert === "warning") {
+                  ?>
+                    <div class="alert alert-warning" role="alert">
+                      Complete todos los campos
+                    </div>
+                  <?php
+                } else {
+                  ?>
+                    <div class="alert alert-light" role="alert">
+                     Bienvenido
+                    </div>
+                  <?php
+                }
+            ?>  
                 <!--------------------------------------------------- Columna formulario ---------------------------------------------->
-                <div class="col-6">
-                    <form>
+                <div class="col-6">                
+                    <form id="formularioContacto" method="POST">
                         <div class="mb-3">
-                            <label for="Nombre" class="form-label" style="color: #f4f4f4">Nombre</label>
-                            <input type="Nombre" class="form-control" id="Nombre" aria-describedby="emailHelp"
-                                required />
+                            <label for="nombre" class="form-label" style="color: #f4f4f4">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp"/>
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label" style="color: #f4f4f4">Correo
+                            <label for="correo" class="form-label" style="color: #f4f4f4">Correo
                                 electrónico</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="nombre@ejemplo.com" required />
+                            <input type="text" class="form-control" name="correo"
+                                placeholder="nombre@ejemplo.com" />
                         </div>
 
                         <div class="mb-3">
-                            <label for="MensajeConocenos" class="form-label" style="color: #f4f4f4">Dejanos aqui tu
+                            <label for="mensaje" class="form-label" style="color: #f4f4f4">Dejanos aqui tu
                                 mensaje</label>
-                            <textarea class="form-control" id="MensajeConocenos" rows="4" required></textarea>
+                            <textarea class="form-control" name="mensaje" rows="4"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-outline-light">Enviar</button>
+                        <button type="submit" Name= "btnEnviarContacto" class="btn btn-outline-light" value="EnviarContacto">Enviar</button>
                     </form>
                 </div>
                 <!--------------------------------------------------- Columna botones de contacto ---------------------------------------------->
@@ -132,3 +161,4 @@
 <br/>
 <br/>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

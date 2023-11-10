@@ -11,7 +11,7 @@
 
 <!--------------------------------------------------------FORMULARIO------------------------------------------------------->
 <br/>
-    <h1 class="text-center">REGISTRO DE INGRESOS</h1>
+    <h1 class="text-center">CAMBIO DE CONTRASEÑA</h1>
     <div class="row">
       <div class="col-1">
       </div>
@@ -22,13 +22,13 @@
         if ($alert === "success") {
         ?>
           <div class="alert alert-success" role="alert">
-            El ingreso ha sido guardado
+            La nueva contraseña ha sido guardado
           </div>
         <?php
         } elseif ($alert === "danger") {
         ?>
           <div class="alert alert-danger" role="alert">
-            El ingreso no ha sido guardado
+          La nueva contraseña no ha sido guardado
           </div>
         <?php
         } elseif ($alert === "warning") {
@@ -45,24 +45,20 @@
           <?php
         }
       ?>
-      <form id="formularioEgresos" method="POST">
+      <form id="formularioContraseña" method="POST">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="concepto">Medio:</label>
-                <select class="form-control" name="medio">
-                    <option selected>Seleccionar</option>
-                    <option value="Efectivo">Efectivo</option>
-                    <option value="Transferencia">Transferencia</option>
-                    <option value="Otro">Otro</option>
+                <label for="usuario">Nombre de Usuario:</label>
+                <input type="text" class="form-control" name="usuario">
                 </select>
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="monto">Monto:</label>
-                <input type="number" class="form-control" name="monto" placeholder="Ejemplo: $0">
+                <label for="contraseña">Antigua contraseña:</label>
+                <input type="text" class="form-control" name="contraseña">
               </div>
             </div>
           </div>
@@ -70,20 +66,14 @@
           <div class="row">
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-                <label for="fecha">Fecha:</label>
-                <input type="date" class="form-control" name="fecha">
+                <label for="nuevacontraseña">Nueva contraseña:</label>
+                <input type="text" class="form-control" name="nuevacontraseña">
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="form-group">
-              <label for="categoria">Categoría:</label>
-                <select class="form-control" name="categoria">
-                  <option selected>Seleccionar</option>
-                    <option value="1">Salario</option>
-                    <option value="2">Bonificación</option>
-                    <option value="3">Regalo</option>
-                    <option value="4">Otro</option>
-                </select>
+              <label for="nuevacontraseña2">Confirmar nueva contraseña:</label>
+                <input type="text" class="form-control" name="nuevacontraseña2">
               </div>
             </div>
           </div>
@@ -92,8 +82,8 @@
             <div class="col-md-4">
             </div> 
             <div class="col-md-4 col-sm-12 text-center">
-              <button type="submit" class="btn btn-outline-dark" name="btnEnviarIngreso" value="EnviarIngreso">
-                Registrar Ingreso
+              <button type="submit" class="btn btn-outline-dark" name="btnCambiarContraseña" value="CambiarContraseña">
+                Guardar Contraseña
               </button>
             </div>
             <div class="col-md-4">
@@ -105,6 +95,11 @@
       <div class="col-1">
       </div>
     </div>
+
+<br/>
+<br/>
+
+<?php include '../layout/footer.php'; ?>
 
 <br/>
 <br/>
