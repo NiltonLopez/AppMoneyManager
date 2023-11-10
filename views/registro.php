@@ -43,9 +43,36 @@ include 'layout/header.php';
   </div>
   <div class="row justify-content-center g-2">
     <div class="col-6">
-      <input type="number" class="form-control" name="telefono" placeholder="Escribe tu teléfono (Opcional)" required>
+      <input type="number" class="form-control" name="telefono" placeholder="Escribe tu teléfono" required>
     </div>
   </div>
+
+  <div class="row justify-content-center g-2">
+    <div class="col-6">
+      <?php
+      if (!empty($alert)) {
+        echo '<div class="alert alert-' . $alert . ' alert-dismissible fade show" role="alert">
+                <strong>';
+        // Agrega el mensaje de error específico si existe
+        if ($alert === "success") {
+          echo '¡Guardado Exitoso!';
+        } elseif ($alert === "danger") {
+          echo '¡error al insertar!';
+        } elseif ($alert === "warning") {
+          echo 'Las contraseñas no coinden';
+        } elseif ($alert === 'errorPass') {
+          echo 'Las contraseñas no coinden';
+        }
+        echo '</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+      }
+      $alert = "";
+      ?>
+    </div>
+  </div>
+
+
   <div class="row justify-content-center g-2">
     <div class="col-3 d-flex justify-content-end">
       <button name="btnComenzar" type="submit" class="btn btn-dark" value="Comenzar">Comenzar</button>
@@ -55,6 +82,9 @@ include 'layout/header.php';
     </div>
   </div>
 </form>
+
+
+
 
 <br>
 <br>
