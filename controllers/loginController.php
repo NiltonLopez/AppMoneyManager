@@ -14,21 +14,19 @@ if (!empty($_POST["btningresar"])) {
             $_SESSION['usuario_id'] = $datos->id;
             $_SESSION['usuario_email'] = $datos->Email;
 
-            
 
             // Redirigir a la página de inicio del usuario
             header("location:user/inicio.php");
         } else {
             echo '<div class="alert alert-danger">ACCESO DENEGADO</div>';
         }    
-        echo $_SESSION['usuario_email'];
     }
 }
 
-if (isset($_POST['cerrar_sesion'])) {
+if (isset($_POST['btnCerrarSesion'])) {
     session_destroy();
-    
-    header("location: ./index.php");
+
+    header("Location: http://localhost/MoneyManager/index.php"); // Cambia "index.php" por la URL de la página a la que deseas redirigir
     exit();
 }
 ?>
