@@ -34,6 +34,24 @@
                     
                         // Consultar egresos
                         $egresos = $egresosModel -> consultarEgresos($idUsuario);
+
+                        //Lista de Ingresos
+                        $listaIngresos = $ingresosModel->obtenerIngresosPorUsuario($idUsuario);
+
+                        $totalIngresos = 0;
+                        while ($ingreso = $listaIngresos->fetch_assoc()) 
+                        {
+                        $totalIngresos += $ingreso['Monto'];
+                        }
+
+                        //Lista de Egresos
+                        $listaEgresos = $egresosModel->obtenerEgresosPorUsuario($idUsuario);
+
+                        $totalEgresos = 0;
+                        while ($egreso = $listaEgresos->fetch_assoc()) 
+                        {
+                        $totalEgresos += $egreso['Monto'];
+                        }
                 ?>
                 <h3>Ingresos:</h3>
                     <table class="table table-dark table-striped">
@@ -69,6 +87,10 @@
                         </tbody>
                     </table>
 
+                    <div style="text-align: center; margin-top: 10px; font-size: 30px;">
+                         <label>Total de Ingresos: <?php echo $totalIngresos; ?></label>
+                    </div>
+
                     <h3>Egresos:</h3>
                     <table class="table table-dark table-striped">
                         <!-- Encabezados de la tabla -->
@@ -102,6 +124,10 @@
                             <?php } ?>
                         </tbody>
                     </table>
+
+                    <div style="text-align: center; margin-top: 10px; font-size: 30px;">
+                        <label>Total de Egresos: <?php echo $totalEgresos; ?></label>
+                    </div>
             </div>
         <div class="col-1">
         </div>
