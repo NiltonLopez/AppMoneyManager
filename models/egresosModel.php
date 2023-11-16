@@ -74,11 +74,12 @@
         }
 
         // Consultar 
-        public function consultarEgresos(){
+        public function consultarEgresos($idUsuario){
             $sql = "SELECT egresos.idEgreso, egresos.Concepto, egresos.Monto, egresos.Fecha, categoria.NombreCategoria AS nombreCategoria
                     FROM tbl_egresos AS egresos
                     INNER JOIN tbl_categoriaEgresos AS categoria 
-                    ON egresos.idCategoria = categoria.idCatEgresos";
+                    ON egresos.idCategoria = categoria.idCatEgresos
+                    WHERE egresos.idUsuario = '$idUsuario'";
             $egresos = $this->db->query($sql);
         
             return $egresos;

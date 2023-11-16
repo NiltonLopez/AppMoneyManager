@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__ . '/../models/ingresosModel.php');
+    require_once(__DIR__ . '/../models/registroModel.php');
 
     $alert = " ";
 
@@ -8,14 +9,17 @@
         $monto = isset($_POST['monto']) ? $_POST['monto'] : false;
         $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : false;
         $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : false;
-        $idUsuario = "1";
+        $emailUsuario = isset($_SESSION['usuario_email']) ? $_SESSION['usuario_email'] : false;
 
         if ($medio && $monto && $fecha && $categoria) {
             $ingreso = new ingresosModel();
+            $persona = new registroModel();
+
             $ingreso->setMedio($medio);
             $ingreso->setMonto($monto);
             $ingreso->setFecha($fecha);
             $ingreso->setIdCategoria($categoria);
+            $idUsuario = $persona->consultaridPersona($emailUsuario);
             $ingreso->setIdUsuario($idUsuario);
             
             $guardar = $ingreso->guardarIngreso();

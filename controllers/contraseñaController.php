@@ -1,6 +1,5 @@
 <?php
 
-
     require_once(__DIR__ . '/../models/contraseñaModel.php');
 
     $alert = " ";
@@ -28,9 +27,5 @@
             $alert = "warning";
         }
         echo $_SESSION['usuario_id'];
-    } 
-
-    
-
-    
+    }    
 ?>
