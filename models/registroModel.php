@@ -62,5 +62,20 @@
             $result = $guardar ? true : false;
             return $result;
         }
+
+        // Consultar 
+        public function consultaridPersona($email){
+            $sql = "SELECT persona.idPersona
+                    FROM tbl_persona AS persona
+                    WHERE persona.Email = '$email'";
+            $result = $this->db->query($sql);
+
+            if ($result) {
+                $row = $result->fetch_assoc();
+                return $row['idPersona'];
+            } else {
+                return null;
+            }
+        }
     }
 ?>

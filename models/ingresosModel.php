@@ -74,11 +74,12 @@
         }
 
         // Consultar 
-        public function consultarIngresos(){
+        public function consultarIngresos($idUsuario){
             $sql = "SELECT ingresos.idIngreso, ingresos.Medio, ingresos.Monto, ingresos.Fecha, categoria.nombreCategoria AS nombreCategoria
                     FROM tbl_ingresos AS ingresos
                     INNER JOIN tbl_categoriaIngresos AS categoria 
-                    ON ingresos.idCategoria = categoria.idCatIngresos";
+                    ON ingresos.idCategoria = categoria.idCatIngresos
+                    WHERE ingresos.idUsuario = '$idUsuario'";
             $ingresos = $this -> db -> query($sql);
 
             return $ingresos; 

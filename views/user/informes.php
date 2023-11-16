@@ -21,15 +21,19 @@
                         include '../../controllers/informesController.php';
                         require_once '../../models/ingresosModel.php';
                         require_once '../../models/egresosModel.php';
+                        require_once '../../models/registroModel.php';
                     
                         $ingresosModel = new ingresosModel();
                         $egresosModel = new egresosModel();
+                        $persona = new registroModel();
+
+                        $idUsuario = $persona->consultaridPersona($_SESSION['usuario_email']);
                     
                         // Consultar ingresos
-                        $ingresos = $ingresosModel -> consultarIngresos();
+                        $ingresos = $ingresosModel -> consultarIngresos($idUsuario);
                     
                         // Consultar egresos
-                        $egresos = $egresosModel -> consultarEgresos();
+                        $egresos = $egresosModel -> consultarEgresos($idUsuario);
                 ?>
                 <h3>Ingresos:</h3>
                     <table class="table table-dark table-striped">

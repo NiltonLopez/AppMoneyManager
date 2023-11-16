@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__ . '/../models/egresosModel.php');
+    require_once(__DIR__ . '/../models/registroModel.php');
 
     $alert = " ";
 
@@ -8,14 +9,17 @@
         $monto = isset($_POST['monto']) ? $_POST['monto'] : false;
         $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : false;
         $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : false;
-        $idUsuario = "1";
+        $emailUsuario = isset($_SESSION['usuario_email']) ? $_SESSION['usuario_email'] : false;
 
         if ($concepto && $monto && $fecha && $categoria) {
             $egreso = new egresosModel();
+            $persona = new registroModel();
+
             $egreso->setConcepto($concepto);
             $egreso->setMonto($monto);
             $egreso->setFecha($fecha);
             $egreso->setIdCategoria($categoria);
+            $idUsuario = $persona->consultaridPersona($emailUsuario);
             $egreso->setIdUsuario($idUsuario);
             
             $guardar = $egreso->guardarEgreso();
