@@ -92,5 +92,18 @@
             $result = $eliminado ? true : false;
             return $result;
         }
+
+        public function obtenerEgresosPorUsuario($idUsuario)
+    {
+        $sql = "SELECT egresos.idEgreso, egresos.Concepto, egresos.Monto, egresos.Fecha, categoria.nombreCategoria AS nombreCategoria
+                FROM tbl_egresos AS egresos
+                INNER JOIN tbl_categoriaEgresos AS categoria 
+                ON egresos.idCategoria = categoria.idCatEgresos
+                WHERE egresos.idUsuario = '$idUsuario'";
+
+        $egresos = $this->db->query($sql);
+
+        return $egresos;
+    }
     }
 ?>
